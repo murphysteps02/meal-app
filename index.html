@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <button id="btn">Get random meal</button>
+  <h2 id="name"></h2>
+  <img id="pic" width="300">
+  <p id="info"></p>
+
+  <script>
+    document.getElementById("btn").onclick = async () => {
+      const res = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+      const data = await res.json();
+      const meal = data.meals[0];
+      document.getElementById("name").textContent = meal.strMeal;
+      document.getElementById("pic").src = meal.strMealThumb;
+      document.getElementById("info").textContent = meal.strInstructions;
+    };
+  </script>
+</body>
+</html>
+
+
